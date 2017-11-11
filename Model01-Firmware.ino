@@ -117,7 +117,7 @@ enum { MACRO_VERSION_INFO,
   * the numbers 0, 1 and 2.
   */
 
-enum { QWERTY, FUNCTION, NUMPAD }; // layers
+enum { QWERTY, PLAYGROUND, FUNCTION, NUMPAD }; // layers
 
 /* This comment temporarily turns off astyle's indent enforcement
  *   so we can make the keymaps actually resemble the physical key layout better
@@ -134,12 +134,29 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    Key_LeftControl, Key_Backspace, Key_LeftShift, Key_LeftGui,
    ShiftToLayer(FUNCTION),
 
-   M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_KeypadNumLock,
-   Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
-                  Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
-   Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
+   LockLayer(PLAYGROUND), Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_KeypadNumLock,
+   Key_Enter,             Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
+                          Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
+   Key_RightAlt,          Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
    Key_LeftAlt, Key_RightShift, Key_Spacebar, Key_RightControl,
    ShiftToLayer(FUNCTION)),
+
+
+  [PLAYGROUND] = KEYMAP_STACKED
+  (___, ___, ___, ___, ___, ___, ___,
+   ___, ___, ___, ___, ___, ___, ___,
+   ___, ___, ___, ___, ___, ___,
+   ___, ___, ___, ___, ___, ___, ___,
+   ___, ___, ___, ___,
+   ___,
+
+   ___, ___, ___, ___, ___, ___, ___,
+   ___, ___, ___, ___, ___, ___, ___,
+        ___, ___, ___, ___, ___, ___,
+   ___, ___, ___, ___, ___, ___, ___,
+   ___, ___, ___, ___,
+   ___),
+
 
   [FUNCTION] =  KEYMAP_STACKED
   (___,          Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           XXX,

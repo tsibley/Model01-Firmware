@@ -56,6 +56,9 @@
 // Support for Keyboardio's internal keyboard testing mode
 #include "Kaleidoscope-Model01-TestMode.h"
 
+// Support for SpaceCadet keys
+#include "Kaleidoscope-SpaceCadet.h"
+
 
 /** This 'enum' is a list of all the macros used by the Model 01's firmware
   * The names aren't particularly important. What is important is that each
@@ -324,7 +327,10 @@ void setup() {
     &Macros,
 
     // The MouseKeys plugin lets you add keys to your keymap which move the mouse.
-    &MouseKeys
+    &MouseKeys,
+
+    // The SpaceCadet plugin makes input of parens/brackets easier
+    &SpaceCadet
   );
 
   // While we hope to improve this in the future, the NumLock plugin

@@ -129,16 +129,16 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
 
 
   [FUNCTION] =  KEYMAP_STACKED
-  (M(MACRO_VERSION_INFO),  Key_F1,           Key_F2,      Key_F3, Key_F4, Key_F5, Key_Delete,
+  (M(MACRO_VERSION_INFO),  Key_F1,           Key_F2,      Key_F3, Key_F4, Key_F5, XXX,
    Key_Backtick,           ___,              ___,         ___,    ___,    ___,    ___,
    Key_Home,               ___,              ___,         ___,    ___,    ___,
    Key_End,                Key_PrintScreen,  Key_Insert,  ___,    ___,    ___,    ___,
    ___, ___, ___, Key_Delete,
    ___,
 
-   Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_F11,
-   Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_LeftCurlyBracket,     Key_RightCurlyBracket,    Key_LeftBracket, Key_RightBracket, Key_F12,
-                               Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  ___,              ___,
+   Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_Delete,
+   Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_LeftCurlyBracket,     Key_RightCurlyBracket,    Key_LeftBracket, Key_RightBracket, Key_F11,
+                               Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  ___,              Key_F12,
    Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             Key_Backslash,    Key_Pipe,
    ___, ___, Key_Enter, ___,
    ___)

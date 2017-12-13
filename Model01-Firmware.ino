@@ -150,7 +150,7 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    Key_Backtick, ___,              ___,         ___,    ___,    ___,    ___,
    Key_Home,     ___,              ___,         ___,    ___,    ___,
    Key_End,      Key_PrintScreen,  Key_Insert,  ___,    ___,    ___,    ___,
-   ___, ___, ___, Key_Delete,
+   ___, Key_Backspace, ___, Key_Delete,
    ___,
 
    Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_F11,

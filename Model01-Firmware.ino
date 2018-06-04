@@ -110,7 +110,7 @@ enum { QWERTY, NUMPAD, FUNCTION }; // layers
  */
 // *INDENT-OFF*
 
-const Key keymaps[][ROWS][COLS] PROGMEM = {
+KEYMAPS(
 
   [QWERTY] = KEYMAP_STACKED
   (Key_Escape,   Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
@@ -157,7 +157,7 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    ___, ___, Key_Enter, ___,
    ___)
 
-};
+	) // KEYMAPS(
 
 /* Re-enable astyle's indent enforcement */
 // *INDENT-ON*
@@ -247,47 +247,45 @@ void hostPowerManagementEventHandler(kaleidoscope::HostPowerManagement::Event ev
   toggleLedsOnSuspendResume(event);
 }
 
+// First, tell Kaleidoscope which plugins you want to use.
+// The order can be important. For example, LED effects are
+// added in the order they're listed here.
+KALEIDOSCOPE_INIT_PLUGINS(
+  // The boot greeting effect pulses the LED button for 10 seconds after the keyboard is first connected
+  BootGreetingEffect,
+
+  // The hardware test mode, which can be invoked by tapping Prog, LED and the left Fn button at the same time.
+  TestMode,
+
+  // LEDControl provides support for other LED modes
+  LEDControl,
+
+  // We start with the LED effect that turns off all the LEDs.
+  LEDOff,
+
+  // The rainbow effect changes the color of all of the keyboard's keys at the same time
+  // running through all the colors of the rainbow.
+  LEDRainbowEffect,
+
+  // The numpad plugin is responsible for lighting up the 'numpad' mode
+  // with a custom LED effect
+  NumPad,
+
+  // The macros plugin adds support for macros
+  Macros,
+
+  // The HostPowerManagement plugin allows us to turn LEDs off when then host
+  // goes to sleep, and resume them when it wakes up.
+  HostPowerManagement
+);
 
 /** The 'setup' function is one of the two standard Arduino sketch functions.
-  * It's called when your keyboard first powers up. This is where you set up
-  * Kaleidoscope and any plugins.
-  */
-
+ * It's called when your keyboard first powers up. This is where you set up
+ * Kaleidoscope and any plugins.
+ */
 void setup() {
   // First, call Kaleidoscope's internal setup function
   Kaleidoscope.setup();
-
-  // Next, tell Kaleidoscope which plugins you want to use.
-  // The order can be important. For example, LED effects are
-  // added in the order they're listed here.
-  Kaleidoscope.use(
-    // The boot greeting effect pulses the LED button for 10 seconds after the keyboard is first connected
-    &BootGreetingEffect,
-
-    // The hardware test mode, which can be invoked by tapping Prog, LED and the left Fn button at the same time.
-    &TestMode,
-
-    // LEDControl provides support for other LED modes
-    &LEDControl,
-
-    // We start with the LED effect that turns off all the LEDs.
-    &LEDOff,
-
-    // The rainbow effect changes the color of all of the keyboard's keys at the same time
-    // running through all the colors of the rainbow.
-    &LEDRainbowEffect,
-
-    // The numpad plugin is responsible for lighting up the 'numpad' mode
-    // with a custom LED effect
-    &NumPad,
-
-    // The macros plugin adds support for macros
-    &Macros,
-
-    // The HostPowerManagement plugin enables waking up the host from suspend,
-    // and allows us to turn LEDs off when it goes to sleep.
-    &HostPowerManagement
-  );
 
   // While we hope to improve this in the future, the NumPad plugin
   // needs to be explicitly told which keymap layer is your numpad layer
@@ -296,9 +294,6 @@ void setup() {
   // We set the brightness of the rainbow effects to 150 (on a scale of 0-255)
   // This draws more than 500mA, but looks much nicer than a dimmer effect
   LEDRainbowEffect.brightness(150);
-
-  // We want the keyboard to be able to wake the host up from suspend.
-  HostPowerManagement.enableWakeup();
 
   // We want to make sure that the firmware starts with LED effects off
   // This avoids over-taxing devices that don't have a lot of power to share

@@ -242,7 +242,7 @@ KEYMAPS(
   (___,          Key_F1,           Key_F2,      Key_F3, Key_F4, Key_F5, XXX,
    Key_Backtick, ___,              ___,         ___,    ___,    ___,    ___,
    Key_Home,     ___,              ___,         ___,    ___,    ___,
-   Key_End,      Key_PrintScreen,  Key_Insert,  ___,    ___,    ___,    ___,
+   Key_End,      Key_PrintScreen,  ___,         ___,    ___,    ___,    ___,
    Key_Delete, Key_Backspace, ___, ___,
    ___,
 
